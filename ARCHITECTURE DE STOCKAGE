@@ -1,0 +1,8 @@
+ARCHITECTURE DE STOCKAGE (Audit Technique)
+1. Choix du Système de Fichiers : F2FS
+Contrairement à ext4, F2FS est conçu spécifiquement pour les mémoires flash (cartes SD). Il minimise l'écriture (Write Amplification) et maximise la durée de vie et la vitesse de lecture aléatoire, ce qui est crucial pour charger des programmes eBPF rapidement.
+
+2. Chiffrement : LUKS2 avec Adiantum
+Adiantum utilise ChaCha12 et Poly1305. C'est extrêmement rapide sur ARM car il utilise les instructions NEON SIMD du Luckfox au lieu de chercher des instructions AES absentes.
+
+Performance cible : < 5% d'overhead CPU lors des accès disques.
