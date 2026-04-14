@@ -1,0 +1,4 @@
+I. LE SCHÉMA MENTAL
+Actuellement, le processeur du Luckfox est programmé pour démarrer sur sa petite puce interne (qui est pleine à 100%). Cette puce interne n'a pas les modules cryptographiques pour déchiffrer nativement notre carte SD au démarrage.
+
+La solution "Zero-Trust" : Nous allons transformer la mémoire interne du Luckfox en un "Démarreur Sacrifié" (Stage 1 Bootloader). Il va démarrer normalement, lire une clé de déverrouillage physique (Keyfile) que nous allons cacher, déverrouiller notre partition Adiantum, puis exécuter la commande pivot_root. Cette commande va permuter la racine du système : le Luckfox va instantanément basculer dans notre forteresse chiffrée sur la SD, et détruire virtuellement l'accès à son ancienne mémoire interne. C'est de l'Immutable Infrastructure pure.
