@@ -1,0 +1,12 @@
+# ⚔️ PHASE 8 : DÉPLOIEMENT DE L'IPS HEURISTIQUE (Shadow-Kicker v3.0)
+
+**Évolution de l'Architecture :** Transition du mode IDS (Surveillance) au mode IPS (Prévention Active) en l'absence de Netfilter.
+
+**Innovation Algorithmique :** Implémentation d'un moteur heuristique en C pur (Ring 3 / Userspace) capable de faire du "Rate-Limiting" intelligent sans utiliser `iptables`.
+
+**Mécanique de détection :**
+- Suivi temporel des requêtes L2 via les pointeurs de temps (`time_t`).
+- Évaluation de l'agressivité de la source : Déclenchement d'une alerte critique si la vélocité d'une IP source dépasse le seuil de 10 paquets/seconde.
+- Le système discrimine désormais automatiquement un trafic humain légitime d'une attaque automatisée (Scan Nmap / ICMP Flood).
+
+**Prochaine étape :** Injection de paquets TCP RST forgés pour la neutralisation asynchrone des threads d'attaque, et interfaçage avec le modèle ONNX/RKNN.
