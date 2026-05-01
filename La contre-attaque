@@ -1,0 +1,7 @@
+# 🛡️ PHASE 4 : HARDENING RADICAL & USERSPACE DEFENSE
+
+**Audit de vulnérabilité :** Détection de services critiques actifs (Telnet, SMB, ADB) sur le firmware d'usine.
+**Réponse immédiate :** - Termination des daemons non-sécurisés via `killall`.
+- Transition vers une défense de type **"Active TCP Reset"** en Userspace.
+
+**Architecture de remplacement :** En l'absence de support Netfilter dans le noyau minimaliste, la sécurité est déportée sur une **Sonde Neuronale (NPU)**. Cette sonde utilise des sockets bruts (`AF_PACKET`) pour monitorer le trafic et neutraliser les vecteurs d'attaque par injection de paquets de rejet.
