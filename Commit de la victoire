@@ -1,0 +1,13 @@
+# 🔒 UPDATE : HARDWARE ROOT OF TRUST & ENTROPIE RTL (FIPS 204)
+
+**Statut de l'architecture :** DÉPLOIEMENT RÉUSSI
+**Niveau de sécurité :** Air-Gapped / Militaire
+
+Nous avons franchi l'étape la plus critique de la Passerelle Quantique. Le système n'utilise plus de clés générées localement par un OS embarqué faible. Nous avons basculé sur une architecture de **Génération Centralisée Isolée** couplée à une **Injection NAND**.
+
+### 🛠️ Nouvelles Implémentations :
+1. **Génération par Entropie Matérielle (RTL) :** La graine cryptographique initiale (Seed) n'est plus logicielle. Elle est désormais dictée par un prototype RTL matériel (True Random Number Generator) analysant le chaos physique.
+2. **Forge Post-Quantique (Proxmox) :** Utilisation d'une infrastructure hautement sécurisée pour forger un certificat hybride `p384_mldsa65` (conforme à la norme définitive NIST FIPS 204 / NSA CNSA 2.0).
+3. **Ancrage Air-Gapped (NAND) :** La clé privée maîtresse a été transférée via un pont éphémère direct et scellée (`chmod 400`) dans la puce UBI/NAND interne de 256 Mo du Luckfox. La carte SD ne détient plus aucun secret. 
+
+**Prochaine étape de développement :** Automatisation du Secure-Boot (Script S99) pour le déchiffrement Zero-Touch en RAM, et activation du NPU en mode "Neural-Proxy" pour l'attestation comportementale des paquets réseau.
