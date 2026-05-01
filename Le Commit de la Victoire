@@ -1,0 +1,9 @@
+# 🎨 PHASE 6.5 : DÉPLOIEMENT DU HUD (Heads-Up Display) TACTIQUE
+
+**Évolution :** Mise à niveau du Shadow-Kicker vers la version 2.1 (Chroma Edition).
+**Caractéristiques :**
+- Intégration de codes d'échappement ANSI matériels pour un rendu visuel cognitif.
+- Extraction dynamique et décodage des en-têtes IPv4 (`struct iphdr`) en temps réel (zéro latence).
+- Résolution des adresses IP sources via `inet_ntoa` directement depuis le buffer L2.
+
+**Impact Opérationnel :** La passerelle ne se contente plus de bloquer aveuglément ; elle fournit désormais une télémétrie visuelle immédiate permettant à l'opérateur (ou à l'algorithme NPU futur) de classifier la menace en une fraction de seconde. Le système est prêt pour le couplage avec le réseau de neurones.
